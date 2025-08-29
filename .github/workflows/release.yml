@@ -47,6 +47,6 @@ jobs:
 
       - name: Add JSON as a release asset
         run: |
-          echo ${GITHUB_REF#refs/*/}
-          gh release upload ${GITHUB_REF#refs/*/} build/data.json build/data.json.gz
+          VERSION=v$(jq -r '.version' package.json)
+          gh release upload $VERSION build/data.json build/data.json.gz
           
